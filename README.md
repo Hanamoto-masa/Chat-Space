@@ -4,8 +4,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -14,38 +14,39 @@
 ## usersテーブル
 |Column|Type|Option|
 |------|----|------|
-|id|integer|null:false|
 |name|string|null:false|
-|E-mail|string|null:false|
+|E-mail|string|null:false, unique: true|
+|password|string|null:false|
 
 ### Association
 - has_many :posts
-- has_many :groups
+- has_many :groups_users
+- has_many :groups,thought: groups_users
 
 ## postテーブル
 
 |Column|Type|Option|
 |------|----|------|
-|id|integer|null:false|
-|text|string|null:false|
-|image|string|
-|user_id|integer|null:false,foreign_key: true|
+|text|text|null:false|
+|image|string||
+|user_id|references|null:false,foreign_key: true|
+|group_id|references|null:false,foreign_key: true|
+|created_at|timestamps||
 
 ### Association
-- has_many :groups
+- belongs_to   :group
 - belongs_to :user
 
 ## groupテーブル
 
 |Column|Type|Option|
 |------|----|------|
-|id|integer|null:false|
 |name|string|null:false|
-|user_id|integer|null:false,foreign_key: true|
 
 ### Association
-- has_many :users
-- belongs to :post
+- has_many   :users, thought: groups_users
+- has_many   :groups_users
+- has_many   :posts
 
 
 
