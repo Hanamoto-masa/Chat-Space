@@ -5,7 +5,6 @@
 
 .chat-main{
   width: calc(100vw - 300px);
-  // float: left;
 
   .main-header{
     height: 100px;
@@ -56,19 +55,19 @@
       margin-bottom: 40px;
     }
 
-      .massage__name{
+      &__name{
         color: #434a54;
         font-size: 16px;
         font-weight: bold;
       }
 
-      .massage__date{
+      &__date{
         color: #999999;
         font-size: 12px;
         margin-left: 10px;
       }
     
-    .massage__text{
+    &__text{
       color: #434a54;
       font-size: 14px;
       margin-bottom: 10px;
