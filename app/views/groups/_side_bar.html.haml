@@ -1,0 +1,18 @@
+.chat-side
+  .header
+    .user_name
+      = current_user.name
+    .icons
+      = link_to new_group_path do
+        = icon 'fa fa-edit', class: 'icon'
+      = link_to edit_user_path(current_user) do
+        = icon 'fa fa-cog', class: 'icon'
+  .groups
+    - current_user.groups.each do |group|
+      .group
+        = link_to '#' do
+          .group__name
+            = group.name
+          .group__message
+            メッセージです
+     
