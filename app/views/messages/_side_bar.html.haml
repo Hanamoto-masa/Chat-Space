@@ -1,13 +1,12 @@
 .chat-side
   .header
     .user_name
-      seo
+      = current_user.name
     .icons
       =link_to "#", class: "contents__btn" do
         = icon 'fa fa-edit', '500px' 
-      =link_to "#", class: "contents__btn" do
-        = icon 'fa fa-cog', '500px'
-    
+      = link_to edit_user_path(current_user) do
+        = icon 'fa fa-cog', class: 'icon'
   .groups
     .group
       .group__name
@@ -23,4 +22,4 @@
       .group__name
         test３
       .group__message
-        メッセージです ３
+        メッセージです３
