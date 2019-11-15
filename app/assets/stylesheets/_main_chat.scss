@@ -15,19 +15,20 @@
 
     &__left-box{
       margin-top: 35px;
+
+        &__curent-group{
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
+    
+        &__member{
+          font-size: 12px;
+          color: #999999;
+          display: flex;
+        }
     }
         
   
-      &__curent-group{
-        font-size: 20px;
-        margin-bottom: 15px;
-      }
-
-      &__member{
-        font-size: 12px;
-        color: #999999;
-        display: flex;
-      }
 
     &__edit-btn{
       display: flex;
@@ -53,25 +54,26 @@
     .massage{
       display: flex;
       margin-bottom: 40px;
-    }
 
-      &__name{
-        color: #434a54;
-        font-size: 16px;
-        font-weight: bold;
-      }
-
-      &__date{
-        color: #999999;
-        font-size: 12px;
-        margin-left: 10px;
-      }
+        &__name{
+          color: #434a54;
+          font-size: 16px;
+          font-weight: bold;
+        }
     
-    &__text{
-      color: #434a54;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
+        &__date{
+          color: #999999;
+          font-size: 12px;
+          margin-left: 10px;
+        }
+      
+      &__text{
+        color: #434a54;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+  }
+
   } 
 
   .form{
