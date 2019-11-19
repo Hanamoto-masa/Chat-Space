@@ -33,7 +33,7 @@
 
   .groups{
     background-color:#2f3e51;
-    width: 300px;
+    width: 260px;
     height: calc(100vh - 100px);
     padding: 20px 20px 0px;
    
@@ -45,10 +45,12 @@
       &__name{
        font-size: 16px;
        margin-bottom: 5px;
+       color:#fff;
       }
 
       &__message{
         font-size: 11px;
+        color: #ffffff;
       }
     }
 

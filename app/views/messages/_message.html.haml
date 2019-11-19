@@ -1,0 +1,9 @@
+.massage
+  .massage__name
+    = message.user.name
+  .massage__date
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+.massage__text
+  - if message.content.present?
+    = message.content
+= image_tag message.image.url, class: 'message-text__image' if message.image.present?
