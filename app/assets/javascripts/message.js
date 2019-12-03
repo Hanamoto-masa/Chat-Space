@@ -43,8 +43,7 @@ $(function(){
     })
   })
   var buildMessageHTML = function(message) {
-    var image = ""
-    message.image.url ? image = `<img src="${message.image.url}">` : image = ""
+    var image = message.image.url ? `<img src="${message.image.url}">` : "";
     var html = `<div class="message" data-message-id=${message.id}>
                   <div class="message__upper-info">
                     <div class="message__upper-info__user">
@@ -87,7 +86,7 @@ $(function(){
       }
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
   function limitedPageLoad(){
