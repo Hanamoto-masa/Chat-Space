@@ -1,8 +1,9 @@
 $(function(){
   function buildMessage(message){
-    var image = ""
-    message.image_url ? image = `<img src="${message.image_url}">` : image = ""
-    var html = `<div class="message" data-message-id=${message.id}>
+    var image = message.image ? `<img src="${message.image}">` : ""
+    console.log(image)
+    console.log(message)
+    var html = `<div class="message" data-id=${message.id}>
                   <div class="message__name">
                     ${message.name}
                   </div>
@@ -42,28 +43,9 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     })
   })
-  var buildMessageHTML = function(message) {
-    var image = message.image.url ? `<img src="${message.image.url}">` : "";
-    var html = `<div class="message" data-message-id=${message.id}>
-                  <div class="message__upper-info">
-                    <div class="message__upper-info__user">
-                      ${message.user_name}
-                    </div>
-                    <div class="message__upper-info__date">
-                      ${message.created_at}
-                    </div>
-                  </div>
-                  <div class="message__text">
-                    ${message.content}
-                    <div class="message__text">
-                      ${image}
-                    </div>
-                  </div>
-                </div>`
-    return html;
-  };
   var reloadMessages = function() {
-    last_message_id = $($(".view").children()[$(".view").children().length - 1]).attr("data-message-id");
+    last_message_id = $(".message:last").data("id")
+    console.log(last_message_id)
     var httpId = location.href.match(new RegExp(/groups\/(\d+)/))[1]
     var http = `/groups/${httpId}/api/messages`
     $.ajax({
@@ -73,13 +55,14 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
+      console.log(messages)
       var insertHTML = '';
       var pageCount = 0;
       messages.forEach(function(newMessage){
-        insertHTML += buildMessageHTML(newMessage);
+        insertHTML += buildMessage(newMessage);
         pageCount = 1;
       });
-      $(".view").append(insertHTML)
+      $(".messages").append(insertHTML)
       if (pageCount === 1){
         $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
         pageCount = 0;
